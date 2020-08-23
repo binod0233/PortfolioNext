@@ -100,7 +100,7 @@ const Navbar = () => {
         onClose={handleMobileMenuClose}
       >
         <MenuItem onClick={handleMenuClose}>
-          <Link href="/" as="/home">
+          <Link href="/" as="/">
             <a>
               <IconButton color="inherit">
                 <HomeIcon />
@@ -150,7 +150,7 @@ const Navbar = () => {
               <div className={classes.grow} />
               <div className={classes.sectionDesktop}>
                 <IconButton color="inherit">
-                  <Link href="/" as="/home">
+                  <Link href="/" as="/">
                     <a>
                       <Typography className={classes.title} variant="h6" noWrap>
                         Home
