@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Box from "@material-ui/core/Box";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -8,13 +9,14 @@ import Avatar from "@material-ui/core/Avatar";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import HomeIcon from "@material-ui/icons/Home";
+import ContactsIcon from "@material-ui/icons/Contacts";
 
 const useStyles = makeStyles((theme) => ({
   code: {
-    background: "#002752",
+    background: "#1b2232",
   },
   grow: {
     flexGrow: 1,
@@ -59,13 +61,19 @@ import React from "react";
 
 const Navbar = () => {
   const classes = useStyles();
-
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
+  const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -74,41 +82,55 @@ const Navbar = () => {
 
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
-    <Menu
-      getContentAnchorEl={null}
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "center",
-      }}
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "center",
-      }}
-      id={mobileMenuId}
-      keepMounted
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton color="inherit">
-          <HomeIcon />
-        </IconButton>
-        <p>Home</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton color="inherit">
-          <NotificationsIcon />
-        </IconButton>
-        <p>About</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton color="inherit">
-          <AccountCircle />
-        </IconButton>
-        <p>Contact</p>
-      </MenuItem>
-    </Menu>
+    <div>
+      <Menu
+        id={mobileMenuId}
+        getContentAnchorEl={null}
+        anchorEl={mobileMoreAnchorEl}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        keepMounted
+        open={isMobileMenuOpen}
+        onClose={handleMobileMenuClose}
+      >
+        <MenuItem onClick={handleMenuClose}>
+          <Link href="/" as="/home">
+            <a>
+              <IconButton color="inherit">
+                <HomeIcon />
+                <Typography style={{ padding: "1rem" }}>Home</Typography>
+              </IconButton>
+            </a>
+          </Link>
+        </MenuItem>
+        <MenuItem onClick={handleMenuClose}>
+          <Link href="/about" as="/about">
+            <a>
+              <IconButton color="inherit">
+                <PermIdentityIcon />
+                <Typography style={{ padding: "1rem" }}>About</Typography>
+              </IconButton>
+            </a>
+          </Link>
+        </MenuItem>
+        <MenuItem onClick={handleMenuClose}>
+          <Link href="/contact" as="/contact">
+            <a>
+              <IconButton color="inherit">
+                <ContactsIcon />
+                <Typography style={{ padding: "1rem" }}>Contact</Typography>
+              </IconButton>
+            </a>
+          </Link>
+        </MenuItem>
+      </Menu>
+    </div>
   );
   return (
     <>
@@ -116,29 +138,43 @@ const Navbar = () => {
         <div className={classes.grow}>
           <AppBar position="fixed" className={classes.code}>
             <Toolbar>
-              <IconButton edge="start" color="inherit">
-                <Avatar alt="Remy Sharp" src="./avatar.png" />
-              </IconButton>
-              <Typography className={classes.title} variant="h6" noWrap>
-                Binod
-              </Typography>
+              <Link href="/">
+                <a>
+                  <IconButton edge="start" color="inherit">
+                    <Avatar alt="Binod" src="./logo.svg" />
+                  </IconButton>
+                </a>
+              </Link>
+              <Typography variant="h6">Portfolio</Typography>
 
               <div className={classes.grow} />
               <div className={classes.sectionDesktop}>
                 <IconButton color="inherit">
-                  <Typography className={classes.title} variant="h6" noWrap>
-                    Home
-                  </Typography>
+                  <Link href="/" as="/home">
+                    <a>
+                      <Typography className={classes.title} variant="h6" noWrap>
+                        Home
+                      </Typography>
+                    </a>
+                  </Link>
                 </IconButton>
                 <IconButton color="inherit">
-                  <Typography className={classes.title} variant="h6" noWrap>
-                    About
-                  </Typography>
+                  <Link href="/about">
+                    <a>
+                      <Typography className={classes.title} variant="h6" noWrap>
+                        About
+                      </Typography>
+                    </a>
+                  </Link>
                 </IconButton>
                 <IconButton edge="end" color="inherit">
-                  <Typography className={classes.title} variant="h6" noWrap>
-                    Contact
-                  </Typography>
+                  <Link href="/contact">
+                    <a>
+                      <Typography className={classes.title} variant="h6" noWrap>
+                        Contact
+                      </Typography>
+                    </a>
+                  </Link>
                 </IconButton>
               </div>
               <div className={classes.sectionMobile}>
