@@ -69,7 +69,7 @@ const Header = function () {
         <Grid item xs={12}>
           <Typography variant="h5">
             <Typed
-              strings={["Web Design ", "Mern Stack", "Web Development"]}
+              strings={["Web Design ", "MERN Stack", "Web Development"]}
               backSpeed={60}
               typeSpeed={50}
               loop
