@@ -27,6 +27,9 @@ const contact = () => {
           This will soon be updated to a working state
         </Typography>
       </Grid>
+<Typography variant="h4">
+         Email:binodsharma0233@gmail.com
+        </Typography>
     </div>
   );
 };
