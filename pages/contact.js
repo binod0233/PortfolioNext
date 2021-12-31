@@ -26,7 +26,11 @@ const contact = () => {
         <Typography variant="h5">
           This will soon be updated to a working state
         </Typography>
-<Typography variant="h4">
+ <br />
+        <br /> <br />
+        <br /> <br />
+        <br />
+<Typography variant="h6">
          Email:binodsharma0233@gmail.com
         </Typography>
       </Grid>
