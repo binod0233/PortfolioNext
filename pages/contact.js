@@ -28,7 +28,7 @@ const contact = () => {
         </Typography>
  <br />
         <br /> <br />
-        <br /> <br />
+        
         <br />
 <Typography variant="h6">
          Email:binodsharma0233@gmail.com
