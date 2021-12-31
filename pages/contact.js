@@ -30,7 +30,7 @@ const contact = () => {
         <br /> <br />
         
         <br />
-<Typography variant="h6">
+<Typography variant="h5">
          Email:binodsharma0233@gmail.com
         </Typography>
       </Grid>
